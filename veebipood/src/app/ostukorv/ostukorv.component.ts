@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OstukorvComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
+    console.log("OstukorvComponent constructor käivitub");
   }
+
+  ngOnInit(): void { console.log("OstukorvComponent ngOnInIt käivitub");
+  }
+  
 
 }
