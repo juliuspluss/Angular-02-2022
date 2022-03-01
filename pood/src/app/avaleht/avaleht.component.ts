@@ -6,10 +6,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./avaleht.component.css']
 })
 export class AvalehtComponent implements OnInit {
+  tooted = [
+    {nimi: 41, hind: 1999}, // [object Object]
+    {nimi: 13, hind: 721},
+    {nimi: true, hind: 1500},
+    {nimi: 'adsdas', hind: 199}
+  ];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onLisaOstukorvi(toode: any) {
+    // '[{nimi: true, hind: 1500}, {nimi: 'sadasd', hind: 199}]'
+    const ostukorvStoragest = sessionStorage.getItem("ostukorv");
+
+    if (ostukorvStoragest) {
+      const ostukorviTooted = JSON.parse(ostukorvStoragest);
+      ostukorviTooted.push(toode);
+      sessionStorage.setItem("ostukorv",JSON.stringify(ostukorviTooted));
+
+    } else {
+      const ostukorviTooted: any = [];
+      ostukorviTooted.push(toode);
+
+      sessionStorage.setItem("ostukorv",JSON.stringify(ostukorviTooted));
+
+    }
+    
+
+    // toode1, toode2
+    // .push() toode3
+    // toode1, toode2, toode3
+
   }
 
 }
