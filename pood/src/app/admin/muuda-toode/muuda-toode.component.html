@@ -1,1 +1,7 @@
-<p>muuda-toode works!</p>
+<form *ngIf="muutmiseVorm" (ngSubmit)= "onMuuda()" [formGroup]="muutmiseVorm">
+    <label for="">Toote nimetus</label> <br>
+    <input formControlName="nimi" type="text" required> <br>
+    <label for="">Toote hind</label> <br>
+    <input formControlName="hind" type="number" required><br>
+    <button [disabled]="muutmiseVorm.invalid">Muuda toode</button>
+</form>
