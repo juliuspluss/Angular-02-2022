@@ -1,0 +1,18 @@
+<button *ngIf="inimesed.length > 0 "class="btn btn-warning" (click)="tyhjenda()">Tühjenda kõik</button>
+
+<div *ngFor="let element of inimesed">
+    <div>id: {{ element.id }}</div>
+    <div>name: {{ element.name }}</div>
+    <div>username: {{ element.username }}</div>
+    <div>email: {{ element.email }}</div>
+    <div>age: {{ element.age }}</div>
+    <button class= "btn btn-primary" (click)="lisaInimene(element)">Lisa siit</button>
+    <button class="btn btn-danger" (click)="kustutaInimene(element)">Kustuta</button>
+</div>
+
+<div>Vanuste kogusumma: {{ vanusKogusumma }}</div>
+<div>Vanuste kogusumma: {{ vanusKeskmine }}</div>
+<div>Inimeste arv: {{ inimesteArv }}</div>
+
+<div *ngIf="inimesed.length > 0 ">{{ inimesteArv }} €</div>
+<div *ngIf="inimesed.length === 0">Ostukorv on tühi!</div>

@@ -1,0 +1,9 @@
+<div *ngFor="let element of inimesed">
+    <div>id: {{ element.id }}</div>
+    <div>name: {{ element.name }}</div>
+    <div>username: {{ element.username }}</div>
+    <div>email: {{ element.email }}</div>
+    <div>age: {{ element.age }}</div>
+    <button class= "btn btn-primary" (click)="onLisaInimene(element)">Lisa siit</button>
+    
+</div>

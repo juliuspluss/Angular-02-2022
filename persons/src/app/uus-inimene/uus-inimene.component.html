@@ -1,0 +1,15 @@
+<button class="btn btn-light" routerLink="/uusinimene"></button>
+
+<form (ngSubmit)="lisaInimene(vorm)" #vorm="ngForm">
+    <label for="">id:</label>
+    <input ngModel name="id" type="number" required><br>
+    <label for="">name:</label>
+    <input ngModel name="name" type="text" required><br>
+    <label for="">username:</label>
+    <input ngModel name="username" type="text" required><br>
+    <label for="">email:</label>
+    <input ngModel name="email" type="text" required><br>
+    <label for="">age:</label>
+    <input ngModel name="age" type="number" required> <br>
+    <button [disabled]="vorm.invalid">Lisa inimene</button>
+</form>
