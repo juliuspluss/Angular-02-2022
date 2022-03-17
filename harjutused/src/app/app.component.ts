@@ -12,6 +12,9 @@ export class AppComponent {
   n2itaRohelist = false;
   n2itaSinist = false;
   n2itaPunast = false;
+  s6na = "naerata";
+  number = 7;
+   
 
   onKlikkimisel() {
     this.n2itaKollast = !this.n2itaKollast;
@@ -35,10 +38,22 @@ export class AppComponent {
       this.n2itaPunast = false;
       console.log(this.n2itaPunast);
     }, 2000);
-}
-
-klaviatuurilVajutades() {
-  window.alert("Vajutasid klaviatuuril!");
   }
+
+  klaviatuurilVajutades() {
+    window.alert("Vajutasid klaviatuuril!");
+  }
+
+  klikkimisel() {
+    this.s6na = this.s6na + 100;
+    console.log(this.s6na)
+  }
+
+  klikkimiselJ2lle() {
+    this.number = this.number + 100;
+    console.log(this.number)
+  }
+
+  
 }
 

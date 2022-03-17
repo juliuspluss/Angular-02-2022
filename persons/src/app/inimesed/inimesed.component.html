@@ -1,3 +1,4 @@
+
 <div *ngFor="let element of inimesed">
     <div>id: {{ element.id }}</div>
     <div>name: {{ element.name }}</div>
@@ -5,5 +6,6 @@
     <div>email: {{ element.email }}</div>
     <div>age: {{ element.age }}</div>
     <button class= "btn btn-primary" (click)="onLisaInimene(element)">Lisa siit</button>
-    
+    <button routerLink="/inimene/{{element.id}}"> Mine vaata</button>
+    <button routerLink="/muuda/{{element.id}}"> Muuda</button> 
 </div>

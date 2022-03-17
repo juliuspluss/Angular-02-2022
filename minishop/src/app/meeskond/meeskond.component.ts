@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeeskondComponent implements OnInit {
 
+  members12 = ["Tõnu", "Kaarel", "Pille", "Joonas"];
+
   constructor() { }
 
   ngOnInit(): void {

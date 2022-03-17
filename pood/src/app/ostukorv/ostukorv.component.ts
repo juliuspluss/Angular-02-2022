@@ -67,7 +67,7 @@ export class OstukorvComponent implements OnInit {
       "order_reference": Math.ceil(Math.random()*999999),
       "nonce": "92ddcfab96e34a5f" + Math.ceil(Math.random()*999999) + new Date(),
       "timestamp": new Date(),
-      "customer_url": "https://www.postimees.ee"
+      "customer_url": "https://en.wikipedia.org/wiki/My_Little_Pony"
     }
     const headers = {
       headers: new HttpHeaders(

@@ -14,6 +14,7 @@ export class UusInimeneComponent implements OnInit {
 
   lisaInimene(lisamiseVorm: any) {
     console.log(lisamiseVorm);
+    localStorage.setItem("inimesed",JSON.stringify(lisamiseVorm.value));
   }
 
 }

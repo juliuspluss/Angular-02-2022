@@ -1,1 +1,9 @@
-<p>mouse works!</p>
+<div *ngFor="let mouse of mice">
+    <h1> Nimi: {{ mouse.name }} </h1> <br>
+    <h2> Vanus: {{ mouse.age }} </h2> <br>
+    Pilt: <img src="{{mouse.image}}"> <br>
+    <div>Kodu: {{ mouse.home }}</div> <br>
+    <p>Lapsed: {{ mouse.children }}</p> <br>
+    <span>Omanik: {{ mouse.owner }}</span> <br>
+    <br><br><br>
+</div>

@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cat.component.css']
 })
 export class CatComponent implements OnInit {
+  cats = [
+    "Miisu",
+    "Kiisu",
+    "Liisu",
+    "Kiti",
+    "Nurr"
+  ]
+  
+  summaKorvis = 0;
+
+  
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
