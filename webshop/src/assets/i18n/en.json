@@ -1,6 +1,11 @@
 {
-    "navbar.admin-button": "To admin view",
-    "navbar.cart-button": "Cart",
-    "navbar.add-prod-button": "Add product",
-    "navbar.view-prod-button": "View products"
-  }
+  "navbar.admin-button": "Admin vaade",
+  "navbar.cart-button": "Ostukorv",
+  "navbar.add-prod-button": "Lisa toode",
+  "navbar.view-prod-button": "Vaata tooteid",
+  "home.sortaz": "Sort A-Z",
+  "home.sortza": "Sort Z-A",
+  "home.sort-price-asc": "Sort by price increasing",
+  "home.sort-price-desc": "Sort by price decreasing",
+  "home.add-to-cart": "Add to cart"
+}
