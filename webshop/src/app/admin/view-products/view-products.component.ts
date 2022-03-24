@@ -10,6 +10,11 @@ import { Product } from 'src/app/models/product.model';
 export class ViewProductsComponent implements OnInit {
 
   products: Product[] = [];
+  originalProducts: Product[] = [];
+  wordCount = 4;
+  searchedProduct = "";
+  
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +25,7 @@ export class ViewProductsComponent implements OnInit {
         newArray.push(productsFromDb[key]);
       }
       this.products = newArray;
+      this.originalProducts = newArray;
     })
   }
 
@@ -29,6 +35,12 @@ export class ViewProductsComponent implements OnInit {
     this.http.put("https://webshop-02-22-default-rtdb.europe-west1.firebasedatabase.app/products.json",
         this.products).subscribe();
     console.log(product);
+  }
+
+  onSearch() {
+    this.products = this.originalProducts.filter(element => 
+      element.name.toLowerCase().indexOf(this.searchedProduct.toLowerCase()) > -1 
+      || element.id.toString().indexOf(this.searchedProduct.toLowerCase()) < -1);
   }
 
 }
