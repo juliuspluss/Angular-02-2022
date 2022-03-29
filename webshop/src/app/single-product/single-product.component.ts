@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; //node_module seest
 import { Product } from '../models/product.model';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-single-product',
@@ -18,7 +19,7 @@ export class SingleProductComponent implements OnInit {
   
 
   constructor(private route: ActivatedRoute,
-    private http: HttpClient) { }
+    private productService: ProductService) { }
 
   ngOnInit(): void {
     // const id = location.href.split("toode/")[1];
@@ -31,7 +32,7 @@ export class SingleProductComponent implements OnInit {
     // this.isActive = this.route.snapshot.paramMap.get("isactive");
     // console.log(id);
 
-    this.http.get<Product[]>("https://webshop-02-22-default-rtdb.europe-west1.firebasedatabase.app/products.json").subscribe(productsFromDb => {
+    this.productService.getProductsFromDb().subscribe(productsFromDb => {
       let newArray = [];
       for (const key in productsFromDb) {
         newArray.push(productsFromDb[key]);

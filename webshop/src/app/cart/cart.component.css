@@ -6,7 +6,7 @@
     margin: 0 10%;
 }
 
-.cart-item-img {
+.cart-item-pic {
     width: 225px;
 }
 
@@ -46,4 +46,13 @@
     font-size: 22px;
     margin: 0 10%;
     text-align: right;
+}
+
+.disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.disabled:hover {
+    opacity: 0.2;
 }

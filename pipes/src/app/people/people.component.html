@@ -1,0 +1,6 @@
+<div *ngFor="let p of people">
+    <div>{{p.name | shorten:1}}</div>
+    <div>{{2022 - p.age}}</div>
+    <div>{{p.countrycode | countrycode}}</div>
+    <br>
+</div>

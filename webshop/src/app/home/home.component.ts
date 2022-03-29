@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastService } from 'angular-toastify';
 import { CartProduct } from '../models/cart-product.model';
 import { Product } from '../models/product.model';
+import { CartService } from '../services/cart.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +14,13 @@ import { Product } from '../models/product.model';
 export class HomeComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private http: HttpClient,
-    private _toastService: ToastService) { }
+  constructor(
+    private _toastService: ToastService,
+    private cartService: CartService,
+    private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.http.get<Product[]>("https://webshop-02-22-default-rtdb.europe-west1.firebasedatabase.app/products.json").subscribe(productsFromDb => {
+    this.productService.getProductsFromDb().subscribe(productsFromDb => {
       let newArray = [];
       for (const key in productsFromDb) {
         newArray.push(productsFromDb[key]);
@@ -42,8 +46,12 @@ export class HomeComponent implements OnInit {
 
       } else {
         // ei ole olemas ostukorvis - pushin
+        const parcelIndex = cartProducts.findIndex(element => element.cartProduct.id === 11110000);
+        if (parcelIndex === -1) {
         cartProducts.push({cartProduct: product, quantity: 1});
-
+        } else {
+          cartProducts.splice(cartProducts.length-2, 0, {cartProduct: product, quantity: 1});
+        }
       }
 
     } else {
@@ -51,7 +59,7 @@ export class HomeComponent implements OnInit {
       cartProducts.push({cartProduct: product, quantity: 1});
 
     }
-
+    this.cartService.cartChanged.next(true)
     this._toastService.success('Successfully added to cart');
     sessionStorage.setItem("cart", JSON.stringify(cartProducts));
   }

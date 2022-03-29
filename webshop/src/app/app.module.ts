@@ -18,6 +18,7 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { ProductPricePipe } from './pipes/product-price.pipe';
 import { ShortenDescriptionPipe } from './pipes/shorten-description.pipe';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ShortenDescriptionPipe } from './pipes/shorten-description.pipe';
     AdminHomeComponent,
     SingleProductComponent,
     ProductPricePipe,
-    ShortenDescriptionPipe
+    ShortenDescriptionPipe,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
