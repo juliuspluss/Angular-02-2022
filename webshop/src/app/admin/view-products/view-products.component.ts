@@ -31,9 +31,9 @@ export class ViewProductsComponent implements OnInit {
   }
 
   onDelete(product:Product) {
-    const index = this.products.indexOf(product);
-    this.products.splice(index,1);
-    this.productService.deleteProductFromDb(this.products).subscribe();
+    const index = this.originalProducts.indexOf(product);
+    this.originalProducts.splice(index,1);
+    this.productService.deleteProductFromDb(this.originalProducts).subscribe();
     console.log(product);
   }
 

@@ -19,6 +19,7 @@ import { SingleProductComponent } from './single-product/single-product.componen
 import { ProductPricePipe } from './pipes/product-price.pipe';
 import { ShortenDescriptionPipe } from './pipes/shorten-description.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CategoryComponent } from './admin/category/category.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SingleProductComponent,
     ProductPricePipe,
     ShortenDescriptionPipe,
-    NavbarComponent
+    NavbarComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

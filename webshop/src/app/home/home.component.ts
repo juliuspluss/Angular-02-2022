@@ -59,9 +59,9 @@ export class HomeComponent implements OnInit {
       cartProducts.push({cartProduct: product, quantity: 1});
 
     }
-    this.cartService.cartChanged.next(true)
     this._toastService.success('Successfully added to cart');
     sessionStorage.setItem("cart", JSON.stringify(cartProducts));
+    this.cartService.cartChanged.next(true)
   }
 
   onSortNameAsc() {

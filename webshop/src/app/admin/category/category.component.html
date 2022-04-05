@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmitCategory(addCategoryForm)" #addCategoryForm="ngForm">
+    <label>Category</label> <br>
+    <input ngModel name="name" type="text"> <br>
+    <button>Insert</button>
+</form>
+
+<div *ngFor="let category of categories">
+    <div>{{category.name}}</div>
+    <button (click)="onDeleteCategory(category)">X</button>
+</div>
