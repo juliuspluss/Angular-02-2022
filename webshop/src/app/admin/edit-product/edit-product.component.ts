@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -16,8 +17,11 @@ export class EditProductComponent implements OnInit {
   private products: any[] = [];
   errorMessage = "";
   isIdUnique = false;
+  categories: {name: string}[] = [];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+
+  constructor(private route: ActivatedRoute, private productService: ProductService,
+     private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get("productId"));
@@ -44,6 +48,14 @@ export class EditProductComponent implements OnInit {
           description: new FormControl(product.description),
         });
       }
+    })
+
+    this.categoryService.getCategoriesFromDb().subscribe(categoriesFromDb => {
+      let newArray = [];
+      for (const key in categoriesFromDb) {
+        newArray.push(categoriesFromDb[key]);
+      }
+      this.categories = newArray;
     })
   }
 

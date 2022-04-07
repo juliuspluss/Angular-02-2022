@@ -8,6 +8,7 @@ import { ViewProductsComponent } from './admin/view-products/view-products.compo
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { ShopsComponent } from './shops/shops.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "admin/view", component: ViewProductsComponent },
   // { path: "toode/:name/:description/:id/:category/:isactive", component: SingleProductComponent },
   { path: "toode/:productId", component: SingleProductComponent },
+  { path: "shops", component: ShopsComponent },
 ];
 
 @NgModule({

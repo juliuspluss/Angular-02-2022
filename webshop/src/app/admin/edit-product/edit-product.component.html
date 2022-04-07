@@ -10,7 +10,11 @@
     <label for="">Product description</label> <br>
     <input formControlName="description" type="text" required><br>
     <label for="">Product category</label> <br>
-    <input formControlName="category" type="text" required> <br>
+    <select formControlName="category" required>
+        <option disabled value="">Choose category</option>
+        <option *ngFor="let cat of categories" value="{{cat.name}}">
+            {{cat.name | titlecase}}</option>
+      </select> <br>
     <label for="">Image</label> <br>
     <input formControlName="imgSrc" type="text" required><br>
     <label for="">Active</label> <br>

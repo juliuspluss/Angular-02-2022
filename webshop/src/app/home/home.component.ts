@@ -13,6 +13,7 @@ import { ProductService } from '../services/product.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   constructor(
     private _toastService: ToastService,
