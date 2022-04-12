@@ -12,6 +12,8 @@
     <button (click)="onRemoveFromCart(product)">X</button>
 </div>
 
+<!-- <button (click)="toPay()">Pay here</button> -->
+
 <select 
 *ngIf="!selectedParcelMachine && cartProducts.length > 0" 
 [(ngModel)]="selectedParcelMachine"

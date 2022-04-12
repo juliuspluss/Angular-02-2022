@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CartProduct } from '../models/cart-product.model';
 import { CartService } from '../services/cart.service';
@@ -104,4 +104,29 @@ export class CartComponent implements OnInit {
     );
     sessionStorage.setItem("cart", JSON.stringify(this.cartProducts));
   }
+
+  // toPay() {
+  //   const url = ""
+  //   const data = {
+  //     "api_username": "92ddcfab96e34a5f",
+  //     "account_name": "EUR3D1",
+  //     "amount": this.ostukorviKogusumma,
+  //     "order_reference": Math.ceil(Math.random()*999999),
+  //     "nonce": "92ddcfab96e34a5f" + Math.ceil(Math.random()*999999) + new Date(),
+  //     "timestamp": new Date(),
+  //     "customer_url": "https://en.wikipedia.org/wiki/My_Little_Pony"
+  //   }
+  //   const headers = {
+  //     headers: new HttpHeaders(
+  //       {
+  //         "Authorization": 
+  //         "Basic OTJkZGNmYWI5NmUzNGE1Zjo4Y2QxOWU5OWU5YzJjMjA4ZWU1NjNhYmY3ZDBlNGRhZA=="
+  //       }
+  //     )
+  //   }
+
+  //   this.http.post<any>(url, data, headers).subscribe(res => 
+  //     location.href = res.payment_link
+  //     );
+  // }
 }
