@@ -1,0 +1,10 @@
+<div *ngIf="selectedCategory !='all'">{{ selectedCategory }}</div>
+
+<br><br>
+
+<div *ngFor="let packet of packets">
+    <div>{{ packet.title }}</div>
+    <div>{{ packet.price }}</div>
+    <div>{{ packet.category }}</div>
+    <br>
+</div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ToastService } from 'angular-toastify';
+import { AuthService } from '../auth/auth.service';
 import { CartProduct } from '../models/cart-product.model';
 import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
@@ -13,12 +14,17 @@ import { ProductService } from '../services/product.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
+  originalProducts: Product[] = [];
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  isLoggedIn = false;
+  categories: string [] = [];
+  selectedCategory = "all";
 
   constructor(
     private _toastService: ToastService,
     private cartService: CartService,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.productService.getProductsFromDb().subscribe(productsFromDb => {
@@ -27,8 +33,43 @@ export class HomeComponent implements OnInit {
         newArray.push(productsFromDb[key]);
       }
       this.products = newArray;
-    })
+      this.originalProducts = newArray;
+      this.categories = this.originalProducts
+                        .map(element => element.category)
+                        .filter((element, index, array) => 
+                            index === array.indexOf(element)
+                        );
+                        console.log(this.categories)
+    });
+
+    this.checkIfLoggedIn();
   }
+
+  private checkIfLoggedIn() {
+      this.loggedInFromSS();
+      this.authService.loggedInChanged.subscribe(() => {
+        this.loggedInFromSS();
+      })
+    }
+  
+  loggedInFromSS() {
+    if (sessionStorage.getItem("userData")) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+  }
+
+  onFilterByCategory(category: string) {
+    if (category === 'all') {
+      this.products = this.originalProducts;
+    } else {
+    this.products = this.originalProducts.filter(element => 
+      element.category === category);
+    }
+    this.selectedCategory = category;
+  }
+  
 // onAddToCart läheb objecti {id:3122 jne}
   onAddToCart(product: Product) {
     // {id:3122 jne}

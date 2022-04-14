@@ -5,3 +5,17 @@ Minu poed:
 </div>
 
 <app-map></app-map>
+
+Contact us
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <label>Your name</label>
+    <input ngModel name="name" type="text"> <br>
+    <label>Your email</label>
+    <input ngModel name="email" type="text"> <br>
+    <label>Your phone</label>
+    <input ngModel name="phone" type="number"> <br>
+    <label>Your message</label>
+    <input ngModel name="message" type="text"> <br>
+    <button>Press here to send</button>
+</form>
+

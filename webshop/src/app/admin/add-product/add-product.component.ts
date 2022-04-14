@@ -53,12 +53,14 @@ export class AddProductComponent implements OnInit {
 
   onCheckIdUniqueness(id: number) {
     this.errorMessage = "";
+    console.log(id)
     if (id === 11110000) {
       this.errorMessage = "This is parcel machine ID";
       return;
     }
     if (id >= 10000000 && id <= 99999999) {
       const index = this.products.findIndex(element => element.id == id)
+      console.log(index)
       if (index === -1) {
         console.log("unique!");
         this.isIdUnique = true;

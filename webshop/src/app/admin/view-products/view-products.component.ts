@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -14,10 +15,11 @@ export class ViewProductsComponent implements OnInit {
   originalProducts: Product[] = [];
   wordCount = 4;
   searchedProduct = "";
+  isLoggedIn = false;
   
 
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.productService.getProductsFromDb().subscribe(productsFromDb => {
@@ -28,7 +30,24 @@ export class ViewProductsComponent implements OnInit {
       this.products = newArray;
       this.originalProducts = newArray;
     })
+    this.checkIfLoggedIn();
   }
+
+  private checkIfLoggedIn() {
+      this.loggedInFromSS();
+      this.authService.loggedInChanged.subscribe(() => {
+        this.loggedInFromSS();
+      })
+    }
+  
+  loggedInFromSS() {
+    if (sessionStorage.getItem("userData")) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+  }
+  
 
   onDelete(product:Product) {
     const index = this.originalProducts.indexOf(product);
@@ -41,6 +60,12 @@ export class ViewProductsComponent implements OnInit {
     this.products = this.originalProducts.filter(element => 
       element.name.toLowerCase().indexOf(this.searchedProduct.toLowerCase()) > -1 
       || element.id.toString().indexOf(this.searchedProduct.toLowerCase()) < -1);
+  }
+
+  changeProductActive(product: Product) {
+    const index = this.originalProducts.indexOf(product);
+    this.originalProducts[index].isActive = !this.originalProducts[index].isActive;
+    this.productService.editProductInDb(this.products).subscribe();
   }
 
 }

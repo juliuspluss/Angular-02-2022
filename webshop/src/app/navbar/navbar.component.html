@@ -19,17 +19,17 @@
           <button (click)="useLanguage('en')">ENG</button>
           <button (click)="useLanguage('ee')">EST</button>
           <li class="nav-item dropdown">
-            <a *ngIf="isLoggedIn" class="nav-link dropdown-toggle" routerLinkActive="active" routerLink="/admin"id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a *ngIf="isLoggedIn" class="nav-link" routerLinkActive="active" routerLink="/admin"id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{"navbar.admin-button" | translate}}
             </a>
-            <a *ngIf="!isLoggedIn" class="nav-link dropdown-toggle" routerLinkActive="active" routerLink="/log-in">
+            <a *ngIf="!isLoggedIn" class="nav-link" routerLinkActive="active" routerLink="/log-in">
               Log in
             </a>
-            <a *ngIf="!isLoggedIn" class="nav-link dropdown-toggle" routerLinkActive="active" routerLink="/sign-up">
+            <a *ngIf="!isLoggedIn" class="nav-link" routerLinkActive="active" routerLink="/sign-up">
               Sign up
             </a>
-            <a *ngIf="isLoggedIn" class="nav-link dropdown-toggle" routerLinkActive="active" (click)="onLogOut()">
-              Sign up
+            <a *ngIf="isLoggedIn" class="nav-link" routerLinkActive="active" (click)="onLogOut()">
+              Log out
             </a>
             <ul *ngIf="isLoggedIn" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" routerLinkActive="active" routerLink="/admin/add">{{"navbar.add-prod-button" | translate}}</a></li>
